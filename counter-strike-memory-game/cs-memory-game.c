@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void iniciar_nuevo_juego();
+
 int main(){
     int op;
 
@@ -30,6 +32,7 @@ int main(){
         } while(op < 1 || op > 2);
         switch(op){
             case 1:
+                iniciar_nuevo_juego();
             break;
         }
     } while(op != 2);
