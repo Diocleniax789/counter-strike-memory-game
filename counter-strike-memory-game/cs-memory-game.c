@@ -69,7 +69,7 @@ void iniciar_nuevo_juego(){
     } while(op < 1 || op > 3);
     switch(op){
         case 1:
-            // partida_como_terroristas();
+            partida_como_terroristas();
         break;
 
         case 2:
@@ -77,5 +77,52 @@ void iniciar_nuevo_juego(){
         break;
 
     }
+
+}
+
+void partida_como_terroristas(){
+
+    char grillas [15][15];
+    int num,fil,col,i,j;
+
+    for(i = 0; i < 15; i++){
+        for(j = 0; j < 15; j++){
+            grillas[i][j] = 0;
+        }
+    }
+
+    system("cls");
+    printf("\n- Para iniciar la partida primer coloque el par de numeros en distinta ubicacion -\n");
+    printf("\n");
+        do{
+            fflush(stdin);
+            printf("\n + Seleccione una fila del 0 al 14: ");
+            scanf("%i",&fil);
+            if(fil < 0 || fil > 14){
+                printf("\n Fila inexistente. Coloque una entre el rango mencionado. \n");
+            }
+        } while(fil < || fil > 14);
+
+        printf("\n");
+        printf("\n * Fila seleccionada * \n");
+
+        do{ fflush(stdin);
+            printf("\n + Selecciona una columna del 0 al 14: ");
+            scanf("%i",&col);
+            if(col < 0 || col > 14){
+                 printf("\n Columna inexistente. Coloque una entre el rango mencionado. \n");
+            }
+        } while(col < 0 || fil > 14);
+
+        printf("\n");
+        printf("\n * Columna seleccionada * \n");
+
+        printf("\n - Ingrese un numero para ser almacenado: ");
+        scanf("%i",&num);
+
+
+
+
+
 
 }
