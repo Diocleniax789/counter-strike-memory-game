@@ -83,7 +83,7 @@ void iniciar_nuevo_juego(){
 void partida_como_terroristas(){
 
     char grillas [15][15];
-    int num,fil,col,i,j;
+    int num,fil,col,i,j,numeros[15],flag;
 
     for(i = 0; i < 15; i++){
         for(j = 0; j < 15; j++){
@@ -91,9 +91,19 @@ void partida_como_terroristas(){
         }
     }
 
-    system("cls");
-    printf("\n- Para iniciar la partida primer coloque el par de numeros en distinta ubicacion -\n");
-    printf("\n");
+    for(i = 0; i < 15; i++){
+        numeros[i] = 0;
+    }
+
+
+    do{
+        system("cls");
+        /*printf("\n- Para iniciar la partida primer coloque el par de numeros en distinta ubicacion -\n");
+        printf("\n"); */
+
+        printf("\n /// Ingrese la primera coordenada ///");
+        printf("\n ------------------------------------\n");
+
         do{
             fflush(stdin);
             printf("\n + Seleccione una fila del 0 al 14: ");
@@ -101,7 +111,7 @@ void partida_como_terroristas(){
             if(fil < 0 || fil > 14){
                 printf("\n Fila inexistente. Coloque una entre el rango mencionado. \n");
             }
-        } while(fil < || fil > 14);
+        } while(fil < 0 || fil > 14);
 
         printf("\n");
         printf("\n * Fila seleccionada * \n");
@@ -117,8 +127,25 @@ void partida_como_terroristas(){
         printf("\n");
         printf("\n * Columna seleccionada * \n");
 
-        printf("\n - Ingrese un numero para ser almacenado: ");
+        printf("\n + Ingrese un numero: ");
         scanf("%i",&num);
+
+        if (grillas[fil][col] != 0){
+            printf("\n /////////////////////////////\n");
+            printf("\n x Esa casilla esta ocupada x");
+            printf("\n ////////////////////////////\n");
+        }
+
+    } while(grillas[fil][col] != 0);
+
+    grillas[fil][col] = num;
+
+    system("cls");
+
+    printf("\n /// Ingrese la segunda coordenada ///");
+    printf("\n ------------------------------------ \n");
+
+
 
 
 
