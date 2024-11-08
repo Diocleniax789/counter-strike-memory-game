@@ -1,9 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define FILAS 15
+#define COLUMNAS 15
+
 void iniciar_nuevo_juego();
 void partida_como_terroristas();
 void partida_como_anti_terroristas();
+int * ya_ingresado(int);
+
 
 int main(){
     int op;
@@ -81,6 +86,47 @@ void iniciar_nuevo_juego(){
 }
 
 void partida_como_terroristas(){
+    int numero,contador_casillas_ocupadas,grilla[FILAS][COLUMNAS],lista_numeros_ingresados[FILAS],long_array,pos,flag;
+
+    do{
+        system("cls");
+        do{
+
+            printf("\n /* NO SE PERMITIRA INGRESAR EL MISMO NUMERO MAS DE UNA VEZ */ \n");
+            fflush(stdin);
+            printf("\n + Ingrese un numero para colocarlo en la tabla: ");
+            scanf("%i",&numero);
+            long_array = sizeof(lista_numeros_ingresados);
+            if(long_array == FILAS){
+                lista_numeros_ingresados[0] = numero;
+            } else{
+                    pos = 0;
+                    flag = 0;
+                    do{
+                        if(numero == lista_numeros_ingresados[pos]){
+                            flag = 1;
+                        } else{
+                            pos++;
+                        }
+                    } while(pos < FILAS && flag == 0);
+            }
+
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+    } while(contador_casillas_ocupadas < );
 
 
 
