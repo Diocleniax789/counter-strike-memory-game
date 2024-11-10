@@ -7,6 +7,7 @@
 void iniciar_nuevo_juego();
 void partida_como_terroristas();
 void partida_como_anti_terroristas();
+int numeros_ingresados(int*,int);
 
 int main(){
     int op;
@@ -84,8 +85,8 @@ void iniciar_nuevo_juego(){
 }
 
 void partida_como_terroristas(){
-    int numero,contador_casillas_ocupadas = 0,lista_numeros_ingresados[FILAS],pos = 0,flag = 0,flag2 = 0,x,y,i = 0,j,k;
-    static int grilla[FILAS][COLUMNAS];
+    int contador_casillas_ocupadas = 0,j,k,grilla[FILAS][COLUMNAS],ya_ingresado,x,y,numero;
+    static int lista_numeros[13];
 
     for(j = 0; j < FILAS; j++){
         for(k = 0; k < COLUMNAS; k++){
@@ -93,199 +94,119 @@ void partida_como_terroristas(){
         }
     }
 
+
+    do{
+        system("cls");
+        fflush(stdin);
+        printf("\n - NO SE PERMITIRA EL INGRESO DE OTRO NUMERO YA INGRESADO ANTERIORMENTE - \n");
+        printf("\n Par nro %i",contador_casillas_ocupadas + 1);
         do{
-            fflush(stdin);
-            printf("\n No se podran repetir numeros \n");
-            printf("\n PAR NRO %i",contador_casillas_ocupadas + 1);
-            printf("\n + Escriba un numero para colocarlo en la tabla: ");
+            printf("\n + Ingrese un numero para colocarlos en la casilla: ");
             scanf("%i",&numero);
-            if(lista_numeros_ingresados[0] == 0){
-                lista_numeros_ingresados[0] = numero;
-                contador_casillas_ocupadas++;
+            ya_ingresado = numeros_ingresados(lista_numeros,numero);
+            if(ya_ingresado == 1){
+                printf("\n x ESE NUMERO YA SE HA INGRESADO ANTERIORMENTE. INTENTE CON OTRO x \n");
+            }
+        } while(ya_ingresado == 1);
 
-                        do{
-                            fflush(stdin);
-                            printf("\n Posicion 1, ingrese los dos valores para la coordenada \n");
+        printf("\n COORDENADA NUMERO 1 \n");
 
-                                do{
-                                    fflush(stdin);
-                                    printf("\n + Ingrese valor del eje x: ");
-                                    scanf("%i",&x);
-                                    if(x < 0 || x > 4){
-                                        printf("\n xxxx ERROR. EL VALOR DEBE ESTAR ENTRE '0' O '4'. VUELVA A INTENTAR xxxx \n");
-                                    }
-                                } while(x < 0 || x > 4);
+        do{
+            do{
+                fflush(stdin);
+                printf("\n + Ingrese numero de la posicion X: ");
+                scanf("%i",&x);
+                if(x < 0 || x > 4){
+                    printf("\n x ERROR. INGRESE UN VALOR DE ENTRE '0' y '4' x \n");
+                }
+            } while(x < 0 || x > 4);
 
-                                do{
-                                    fflush(stdin);
-                                    printf("\n + Ingrese valor del eje y: ");
-                                    scanf("%i",&y);
-                                    if(y < 0 || y > 4){
-                                        printf("\n xxxx ERROR. EL VALOR DEBE ESTAR ENTRE '0' O '4'. VUELVA A INTENTAR xxxx \n");
-                                    }
-                                } while(y < 0 || y > 4);
+            do{
+                fflush(stdin);
+                printf("\n + Ingrese numero de la posicion Y: ");
+                scanf("%i",&y);
+                if(y < 0 || y > 4){
+                    printf("\n x ERROR. INGRESE UN VALOR DE ENTRE '0' Y '4' x \n");
+                }
+            } while(y < 0 || y > 4);
 
-                                if(grilla[x][y] != 0){
-                                    printf("\n xxxx ERROR. ESA CASILLA YA ESTA OCUPADA. INGRESE OTRA xxxx");
-                                } else{
-                                    flag2 = 1;
-                                }
-
-                        } while(flag2 == 0);
-
-                        grilla[x][y] = numero;
-                        printf("\n **** NUMERO AGREGADO A LA CASILLA **** \n");
-
-                // DEBO MEJORAR ESTO A LA HORA DE QUE SI INGRESO LA MISMA COORDENADA, SI HAY ALGUN NUMERO YA EN LA CASILLA, EL PROGRAMA DEBERA DECIRLE AL USUARIO DE INGRESAR OTRA COORDENADA
-
-                          do{
-                            fflush(stdin);
-                            printf("\n Posicion 2, ingrese los dos valores para la coordenada \n");
-                                do{
-                                    fflush(stdin);
-                                    printf("\n + Ingrese valor del eje x: ");
-                                    scanf("%i",&x);
-                                    if(x < 0 || x > 4){
-                                        printf("\n xxxx ERROR. EL VALOR DEBE ESTAR ENTRE '0' O '4'. VUELVA A INTENTAR xxxx \n");
-                                    }
-                                } while(x < 0 || x > 4);
-
-                                do{
-                                    fflush(stdin);
-                                    printf("\n + Ingrese valor del eje y: ");
-                                    scanf("%i",&y);
-                                    if(y < 0 || y > 4){
-                                        printf("\n xxxx ERROR. EL VALOR DEBE ESTAR ENTRE '0' O '4'. VUELVA A INTENTAR xxxx \n");
-                                    }
-                                } while(y < 0 || y > 4);
-
-                                if(grilla[x][y] != 0){
-                                    printf("\n xxxx ERROR. ESA CASILLA YA ESTA OCUPADA. INGRESE OTRA xxxx");
-                                } else{
-                                    flag2 = 1;
-                                }
-
-                        } while(flag2 == 0);
-                        grilla[x][y] = numero;
-                        printf("\n **** COORDENADA 2 INGRESADA DE FORMA EXITOSA **** \n");
-                        printf("\n **** NUMERO AGREGADO A LA CASILLA **** \n");
-
+            if(grilla[x][y] != 0){
+                printf("\n x ERROR. ESA CASILLA YA ESTA OCUPADA x \n");
             }
 
+        } while(grilla[x][y] != 0);
+
+        grilla[x][y] = numero;
 
 
+        printf("\n COORDENADA NUMERO 2 \n");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            else{
-                lista_numeros_ingresados[i + 1] = numero;
-                pos = 0;
-                flag = 0;
-                do{
-                    if(numero != lista_numeros_ingresados[pos]){
-                        flag = 1;
-                    } else{
-                        pos++;
-                    }
-
-                } while(pos < FILAS && flag == 0);
-                    if(flag == 1){
-                        contador_casillas_ocupadas++;
-                        do{
-                            fflush(stdin);
-                            printf("\n Posicion 1, ingrese los dos valores para la coordenada \n");
-                                do{
-                                    fflush(stdin);
-                                    printf("\n + Ingrese valor del eje x: ");
-                                    scanf("%i",&x);
-                                    if(x < 0 || x > 4){
-                                        printf("\n xxxx ERROR. EL VALOR DEBE ESTAR ENTRE '0' O '4'. VUELVA A INTENTAR xxxx \n");
-                                    }
-                                } while(x < 0 || x > 4);
-
-                                do{
-                                    fflush(stdin);
-                                    printf("\n + Ingrese valor del eje y: ");
-                                    scanf("%i",&y);
-                                    if(y < 0 || y > 4){
-                                        printf("\n xxxx ERROR. EL VALOR DEBE ESTAR ENTRE '0' O '4'. VUELVA A INTENTAR xxxx \n");
-                                    }
-                                } while(y < 0 || y > 4);
-
-                                if(grilla[x][y] != 0){
-                                    printf("\n xxxx ERROR. ESA CASILLA YA ESTA OCUPADA. INGRESE OTRA xxxx");
-                                } else{
-                                    flag2 = 1;
-                                }
-
-                        } while(flag2 == 0);
-                            grilla[x][y] = numero;
-                            printf("\n **** COORDENADA 1 INGRESADA DE FORMA EXITOSA **** \n");
-                        do{
-                            fflush(stdin);
-                            printf("\n Posicion 2, ingrese los dos valores para la coordenada \n");
-                                do{
-                                    fflush(stdin);
-                                    printf("\n + Ingrese valor del eje x: ");
-                                    scanf("%i",&x);
-                                    if(x < 0 || x > 4){
-                                        printf("\n xxxx ERROR. EL VALOR DEBE ESTAR ENTRE '0' O '4'. VUELVA A INTENTAR xxxx \n");
-                                    }
-                                } while(x < 0 || x > 14);
-
-                                do{
-                                    fflush(stdin);
-                                    printf("\n + Ingrese valor del eje y: ");
-                                    scanf("%i",&y);
-                                    if(y < 0 || y > 4){
-                                        printf("\n xxxx ERROR. EL VALOR DEBE ESTAR ENTRE '0' O '4'. VUELVA A INTENTAR xxxx \n");
-                                    }
-                                } while(y < 0 || y > 4);
-
-                                if(grilla[x][y] != 0){
-                                    printf("\n xxxx ERROR. ESA CASILLA YA ESTA OCUPADA. INGRESE OTRA xxxx");
-                                } else{
-                                    flag2 = 1;
-                                }
-
-                        } while(flag2 == 0);
-                            printf("\n **** COORDENADA 2 INGRESADA DE FORMA EXITOSA **** \n");
-
-                    }
+        do{
+            do{
+                fflush(stdin);
+                printf("\n + Ingrese numero de la posicion X: ");
+                scanf("%i",&x);
+                if(x < 0 || x > 4){
+                    printf("\n x ERROR. INGRESE UN VALOR DE ENTRE '0' y '4' x \n");
                 }
+            } while(x < 0 || x > 4);
 
-                printf("\n");
-                system("pause");
-
-            } while(contador_casillas_ocupadas <= 10);
-
-            grilla[x][y] = numero;
-            printf("\n **** NUMERO AGREGADO A LA CASILLA **** \n");
-
-
-            printf("\n **** EL TABLERO HA SIDO COMPLETADO **** \n");
-
-            for(j = 0; j < FILAS; j++){
-                for(k = 0; k < COLUMNAS; k++){
-                    printf("\t %i",grilla[j][k]);
+            do{
+                fflush(stdin);
+                printf("\n + Ingrese numero de la posicion Y: ");
+                scanf("%i",&y);
+                if(y < 0 || y > 4){
+                    printf("\n x ERROR. INGRESE UN VALOR DE ENTRE '0' Y '4' x \n");
                 }
-                printf("\n");
+            } while(y < 0 || y > 4);
+
+            if(grilla[x][y] != 0){
+                printf("\n x ERROR. ESA CASILLA YA ESTA OCUPADA x \n");
             }
+
+        } while(grilla[x][y] != 0);
+
+        grilla[x][y] = numero;
+
+        printf("\n **** NUMERO INGRESADO EN AMBAS COORDENADAS DE FORMA EXITOSA **** \n");
+
+        printf("\n");
+        system("pause");
+
+
+
+
+    } while(contador_casillas_ocupadas <= 25);
+
+
+
+
+
+
 
 }
 
+int numeros_ingresados(int *lista_numeros,int numero){
+int pos = 0,flag = 0;
+
+if(lista_numeros[0] == 0){
+   lista_numeros[0] = numero;
+   return 0;
+} else{
+    do{
+        if(numero != lista_numeros[pos]){
+            flag = 1;
+        } else{
+            pos++;
+        }
+    } while(pos < 13 && flag == 1);
+
+    if(flag == 1){
+        lista_numeros[pos] = numero;
+        return 0;
+    } else{
+        return 1;
+    }
+}
+
+}
