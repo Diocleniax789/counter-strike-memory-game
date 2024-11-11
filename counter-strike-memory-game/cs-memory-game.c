@@ -105,10 +105,9 @@ void partida_como_terroristas(){
         system("cls");
         fflush(stdin);
         printf("\n - NO SE PERMITIRA EL INGRESO DE OTRO NUMERO YA INGRESADO ANTERIORMENTE - \n");
-          printf("%i",total_casillas);
+        printf("\n CASILLA NUMERO %i \n",contador_casillas_ocupadas + 1);
         do{
 
-            printf("\n COORDENADA NUMERO %i \n",contador_casillas_ocupadas + 1);
             printf("\n + Ingrese un numero para colocarlos en la casilla: ");
             scanf("%i",&numero);
             ya_ingresado = numeros_ingresados(lista_numeros,&numero,&pos_arreglo);
@@ -149,7 +148,7 @@ void partida_como_terroristas(){
 
 
         do{
-                        printf("\n COORDENADA NUMERO %i \n",contador_casillas_ocupadas + 1);
+            printf("\n CASILLA NUMERO %i \n",contador_casillas_ocupadas + 1);
             do{
                 fflush(stdin);
                 printf("\n + Ingrese numero de la posicion X: ");
@@ -179,8 +178,6 @@ void partida_como_terroristas(){
 
         printf("\n **** NUMERO INGRESADO EN AMBAS COORDENADAS DE FORMA EXITOSA **** \n");
 
-
-
         printf("\n");
         system("pause");
 
@@ -189,16 +186,23 @@ void partida_como_terroristas(){
 
     } while(contador_casillas_ocupadas < total_casillas);
 
+   system("cls");
 
-
-   /* for(j = 0; j < FILAS; j++){
+   printf("\n LET'S MOVE OUT! \n");
+   printf("\n");
+   for(j = 0; j < FILAS; j++){
         for(k = 0; k < COLUMNAS; k++){
-            printf("%i | \t",grilla[j][k]);
+            printf(" | x \t");
         }
-        printf("\n");
+        printf("\n --------------\n");
     }
 
-    system("pause");*/
+
+
+
+
+    printf("\n");
+    system("pause");
 
 }
 
