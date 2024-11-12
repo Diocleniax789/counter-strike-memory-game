@@ -86,7 +86,7 @@ void iniciar_nuevo_juego(){
 }
 
 void partida_como_terroristas(){
-    int contador_casillas_ocupadas = 0,j,k,grilla[FILAS][COLUMNAS],ya_ingresado,x,y,total_casillas;
+    int contador_casillas_ocupadas = 0,j,k,grilla[FILAS][COLUMNAS],ya_ingresado,x,y,total_casillas,contador_intentos;
     static int numero;
     static int lista_numeros[ELEMENTOS];
     static int pos_arreglo = 0;
@@ -187,9 +187,6 @@ void partida_como_terroristas(){
 
     } while(contador_casillas_ocupadas < total_casillas);
 
-
-
-
    system("cls");
 
    printf("\n LET'S MOVE OUT! \n");
@@ -201,8 +198,43 @@ void partida_como_terroristas(){
         printf("\n --------------\n");
     }
 
+   contador_intentos = 0;
+   while(contador_intentos < 5){
+    printf("\n //////////////////////////////////////////////// \n");
+    printf("\n Contador de intentos %i",contador_intentos + 1);
+
+    printf("\n -------------------------------------------- \n");
 
 
+    do{
+        fflush(stdin);
+        printf("\n Ingrese numero de la posicion X: ");
+        scanf("%i",&x);
+        if(x < 0 || x > 1){
+            printf("\n x ERROR. INGRESE '0' O '1' x \n");
+        }
+    } while(x < 0 || x > 1);
+
+
+    do{
+        fflush(stdin);
+        printf("\n Ingrese numero de la posicion Y: ");
+        scanf("%i",&y);
+        if(y < 0 || y > 1){
+            printf("\n x ERROR. INGRESE '0' O '1' x \n");
+        }
+    } while(y < 0 || y > 1);
+
+
+
+
+
+
+
+
+
+
+   }
 
 
 
