@@ -104,11 +104,11 @@ void partida_como_terroristas(){
     do{
         system("cls");
         fflush(stdin);
-        printf("\n - NO SE PERMITIRA EL INGRESO DE OTRO NUMERO YA INGRESADO ANTERIORMENTE - \n");
-        printf("\n CASILLA NUMERO %i \n",contador_casillas_ocupadas + 1);
+        printf("\n - NO SE PERMITIRA EL INGRESO DE UN YA INGRESADO ANTERIORMENTE - \n");
+        printf("\n Xx Preparte for the battle xX \n");
         do{
 
-            printf("\n + Ingrese un numero para colocarlos en la casilla: ");
+            printf("\n + Ingrese un numero que sera colocado en dos casillas diferentes: ");
             scanf("%i",&numero);
             ya_ingresado = numeros_ingresados(lista_numeros,&numero,&pos_arreglo);
             if(ya_ingresado == 1){
@@ -119,6 +119,7 @@ void partida_como_terroristas(){
         lista_numeros[pos_arreglo] = numero;
 
         do{
+            printf("\n CASILLA NUMERO %i \n",contador_casillas_ocupadas + 1);
             do{
                 fflush(stdin);
                 printf("\n + Ingrese numero de la posicion X: ");
@@ -186,6 +187,9 @@ void partida_como_terroristas(){
 
     } while(contador_casillas_ocupadas < total_casillas);
 
+
+
+
    system("cls");
 
    printf("\n LET'S MOVE OUT! \n");
@@ -196,6 +200,13 @@ void partida_como_terroristas(){
         }
         printf("\n --------------\n");
     }
+
+
+
+
+
+
+
 
 
 
