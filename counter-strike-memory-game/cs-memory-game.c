@@ -6,6 +6,7 @@
 #define COLUMNAS 2
 #define ELEMENTOS 2
 
+void gotoxy(int,int);
 void cartel_menu();
 void iniciar_nuevo_juego();
 void partida_como_terroristas();
@@ -59,7 +60,7 @@ int contador_apariciones = 0;
 
 while (contador_apariciones < 3){
 system("cls");
-printf("\n");
+gotoxy(100,10);
 Sleep(50);
 printf("\n                                      ..:---------:..                                                        ");
 Sleep(50);
@@ -188,6 +189,14 @@ void iniciar_nuevo_juego(){
     }
 
 }
+
+void gotoxy(int x, int y) {
+    COORD coord;
+    coord.X = x;
+    coord.Y = y;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+}
+
 
 void partida_como_terroristas(){
     int contador_casillas_ocupadas = 0,j,k,ya_ingresado,x,y,total_casillas,contador_intentos,valido1,valido2,score,partida_ganada_perdida = 0;
@@ -322,13 +331,15 @@ void partida_como_terroristas(){
    contador_intentos = 0;
    score = 0;
    while(contador_intentos < 5){
-    printf("\n //////////////////////////////////////////////// \n");
+    printf("\n ////////////////////////////////////////////////");
     printf("\n Contador de intentos: %i",contador_intentos + 1);
-
+    printf("\n ///////////////////////////////////////////////");
     printf("\n -------------------------------------------- \n");
 
 
-    printf("\n - Primera coordenada \n");
+    printf("\n |*******************|");
+    printf("\n - Primera coordenada -");
+    printf("\n |*******************|");
 
     do{
         fflush(stdin);
@@ -353,7 +364,9 @@ void partida_como_terroristas(){
 
     valido1 = buscar_numero_en_la_grilla(grilla,ejeX,ejeY);
 
-    printf("\n - Segunda coordenada \n");
+    printf("\n |*******************|");
+    printf("\n - Segunda coordenada -");
+    printf("\n |*******************|");
 
     do{
         fflush(stdin);
