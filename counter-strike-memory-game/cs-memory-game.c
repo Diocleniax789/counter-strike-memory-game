@@ -199,7 +199,7 @@ void gotoxy(int x, int y) {
 
 
 void partida_como_terroristas(){
-    int contador_casillas_ocupadas = 0,j,k,ya_ingresado,x,y,total_casillas,contador_intentos,valido1,valido2,score,partida_ganada_perdida = 0;
+    int contador_casillas_ocupadas = 0,j,k,ya_ingresado,x,y,total_casillas,contador_intentos,valido1,valido2,score,partida_ganada_perdida = 0,aciertos = 0;
     static int numero;
     static int lista_numeros[ELEMENTOS];
     static int pos_arreglo = 0;
@@ -210,14 +210,14 @@ void partida_como_terroristas(){
     total_casillas = FILAS * COLUMNAS;
     printf("%i",total_casillas);
 
-    for(j = 0; j < FILAS; j++){
-        for(k = 0; k < COLUMNAS; k++){
-            grilla[j][k] = 0;
+        for(j = 0; j < FILAS; j++){
+            for(k = 0; k < COLUMNAS; k++){
+                grilla[j][k] = 0;
+            }
         }
-    }
-
 
     do{
+
         system("cls");
         fflush(stdin);
         printf("\n - NO SE PERMITIRA EL INGRESO DE UN YA INGRESADO ANTERIORMENTE - \n");
@@ -330,9 +330,9 @@ void partida_como_terroristas(){
 
    contador_intentos = 0;
    score = 0;
-   while(contador_intentos < 5){
+   while(contador_intentos < 2 && aciertos < 2){
     printf("\n ////////////////////////////////////////////////");
-    printf("\n Contador de intentos: %i",contador_intentos + 1);
+    printf("\n Contador de intentos: %i",contador_intentos);
     printf("\n ///////////////////////////////////////////////");
     printf("\n -------------------------------------------- \n");
 
@@ -397,21 +397,23 @@ void partida_como_terroristas(){
         printf("\n =================\n");
         score = score + 100;
         partida_ganada_perdida = 1;
+        aciertos++;
     } else{
-        contador_intentos++;
         printf("\n ========================= \n");
         printf("\n * COUNTER-TERRORIST WIN * \n");
         printf("\n ========================= \n");
         partida_ganada_perdida = 0;
+        contador_intentos++;
     }
 
    }
 
-    if(contador_intentos > 5 && partida_ganada_perdida == 0){
+    if(contador_intentos > 1){
         printf("\n HAS PERDIDO \n");
-    } else{
+    } else if(partida_ganada_perdida != 0){
         printf("\n HAS GANADO \n");
     }
+
 
     printf("\n");
     system("pause");
