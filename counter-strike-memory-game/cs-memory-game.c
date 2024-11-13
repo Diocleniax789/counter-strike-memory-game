@@ -158,10 +158,10 @@ void partida_como_terroristas(){
                 fflush(stdin);
                 printf("\n + Ingrese numero de la posicion X: ");
                 scanf("%i",&x);
-                if(x < 0 || x > 9){
+                if(x < 0 || x > 1){
                     printf("\n x ERROR. INGRESE UN VALOR DE ENTRE '0' y '9' x \n");
                 }
-            } while(x < 0 || x > 9);
+            } while(x < 0 || x > 1);
 
             do{
                 fflush(stdin);
@@ -273,7 +273,9 @@ void partida_como_terroristas(){
         printf("\n ========================= \n");
     }
 
-   } //final del while
+   }
+
+
 
     printf("\n");
     system("pause");
