@@ -9,6 +9,7 @@ void iniciar_nuevo_juego();
 void partida_como_terroristas();
 void partida_como_anti_terroristas();
 int numeros_ingresados(int*,int*,int*);
+int buscar_numero_en_la_grilla(int [FILAS][COLUMNAS],int,int);
 
 int main(){
     int op;
@@ -86,10 +87,13 @@ void iniciar_nuevo_juego(){
 }
 
 void partida_como_terroristas(){
-    int contador_casillas_ocupadas = 0,j,k,grilla[FILAS][COLUMNAS],ya_ingresado,x,y,total_casillas,contador_intentos;
+    int contador_casillas_ocupadas = 0,j,k,ya_ingresado,x,y,total_casillas,contador_intentos,valido1,valido2,score;
     static int numero;
     static int lista_numeros[ELEMENTOS];
     static int pos_arreglo = 0;
+    static int grilla[FILAS][COLUMNAS];
+    static int ejeX;
+    static int ejeY;
 
     total_casillas = FILAS * COLUMNAS;
     printf("%i",total_casillas);
@@ -199,17 +203,20 @@ void partida_como_terroristas(){
     }
 
    contador_intentos = 0;
+   score = 0;
    while(contador_intentos < 5){
     printf("\n //////////////////////////////////////////////// \n");
-    printf("\n Contador de intentos %i",contador_intentos + 1);
+    printf("\n Contador de intentos: %i",contador_intentos + 1);
 
     printf("\n -------------------------------------------- \n");
 
 
+    printf("\n - Primera coordenada \n");
+
     do{
         fflush(stdin);
-        printf("\n Ingrese numero de la posicion X: ");
-        scanf("%i",&x);
+        printf("\n Ingrese numero de la posicion X <0 o 1>: ");
+        scanf("%i",&ejeX);
         if(x < 0 || x > 1){
             printf("\n x ERROR. INGRESE '0' O '1' x \n");
         }
@@ -218,31 +225,55 @@ void partida_como_terroristas(){
 
     do{
         fflush(stdin);
-        printf("\n Ingrese numero de la posicion Y: ");
-        scanf("%i",&y);
+        printf("\n Ingrese numero de la posicion Y <0 o 1>: ");
+        scanf("%i",&ejeY);
         if(y < 0 || y > 1){
             printf("\n x ERROR. INGRESE '0' O '1' x \n");
         }
     } while(y < 0 || y > 1);
 
+    printf("\n");
+
+    valido1 = buscar_numero_en_la_grilla(grilla,ejeX,ejeY);
+
+    printf("\n - Segunda coordenada \n");
+
+    do{
+        fflush(stdin);
+        printf("\n Ingrese numero de la posicion X <0 o 1>: ");
+        scanf("%i",&ejeX);
+        if(x < 0 || x > 1){
+            printf("\n x ERROR. INGRESE '0' O '1' x \n");
+        }
+    } while(x < 0 || x > 1);
 
 
+    do{
+        fflush(stdin);
+        printf("\n Ingrese numero de la posicion Y <0 o 1>: ");
+        scanf("%i",&ejeY);
+        if(y < 0 || y > 1){
+            printf("\n x ERROR. INGRESE '0' O '1' x \n");
+        }
+    } while(y < 0 || y > 1);
 
+    printf("\n");
 
+    valido2 = buscar_numero_en_la_grilla(grilla,ejeX,ejeY);
 
+    if(valido1 == valido2){
+        printf("\n =================\n");
+        printf("\n * TERRORIST WIN *\n");
+        printf("\n =================\n");
+        score = score + 100;
+    } else{
+        contador_intentos++;
+        printf("\n ========================= \n");
+        printf("\n * COUNTER-TERRORIST WIN * \n");
+        printf("\n ========================= \n");
+    }
 
-
-
-
-   }
-
-
-
-
-
-
-
-
+   } //final del while
 
     printf("\n");
     system("pause");
@@ -271,4 +302,23 @@ int pos = 0,flag = 0;
             return 0;
         }
     }
+}
+
+int buscar_numero_en_la_grilla(int grilla[FILAS][COLUMNAS], int x, int y) {
+    int i, j, valor;
+
+    valor = grilla[x][y];
+
+    for (i = 0; i < FILAS; i++) {
+        for (j = 0; j < COLUMNAS; j++) {
+            if (i == x && j == y){
+                printf(" | %i\t", grilla[i][j]);
+            } else {
+                printf(" | x \t");
+            }
+        }
+        printf("\n --------------\n");
+    }
+
+    return valor;
 }
