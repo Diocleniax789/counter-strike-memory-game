@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <windows.h>
 
 #define FILAS 2
 #define COLUMNAS 2
@@ -10,6 +11,7 @@ void partida_como_terroristas();
 void partida_como_anti_terroristas();
 int numeros_ingresados(int*,int*,int*);
 int buscar_numero_en_la_grilla(int [FILAS][COLUMNAS],int,int);
+//void mostrar_valores_completos();
 
 int main(){
     int op;
@@ -87,7 +89,7 @@ void iniciar_nuevo_juego(){
 }
 
 void partida_como_terroristas(){
-    int contador_casillas_ocupadas = 0,j,k,ya_ingresado,x,y,total_casillas,contador_intentos,valido1,valido2,score;
+    int contador_casillas_ocupadas = 0,j,k,ya_ingresado,x,y,total_casillas,contador_intentos,valido1,valido2,score,partida_ganada_perdida = 0;
     static int numero;
     static int lista_numeros[ELEMENTOS];
     static int pos_arreglo = 0;
@@ -191,16 +193,30 @@ void partida_como_terroristas(){
 
     } while(contador_casillas_ocupadas < total_casillas);
 
+    printf("\n Game Commencing \n");
+    printf("\n");
+      for(j = 0; j < FILAS; j++){
+        for(k = 0; k < COLUMNAS; k++){
+            printf(" | %i \t",grilla[j][k]);
+        }
+        printf("\n --------------\n");
+    }
+
+    Sleep(3000);
+
    system("cls");
 
    printf("\n LET'S MOVE OUT! \n");
    printf("\n");
+
    for(j = 0; j < FILAS; j++){
         for(k = 0; k < COLUMNAS; k++){
             printf(" | x \t");
         }
         printf("\n --------------\n");
     }
+
+
 
    contador_intentos = 0;
    score = 0;
@@ -266,20 +282,25 @@ void partida_como_terroristas(){
         printf("\n * TERRORIST WIN *\n");
         printf("\n =================\n");
         score = score + 100;
+        partida_ganada_perdida = 1;
     } else{
         contador_intentos++;
         printf("\n ========================= \n");
         printf("\n * COUNTER-TERRORIST WIN * \n");
         printf("\n ========================= \n");
+        partida_ganada_perdida = 0;
     }
 
    }
 
-
+    if(contador_intentos > 5 && partida_ganada_perdida == 0){
+        printf("\n HAS PERDIDO \n");
+    } else{
+        printf("\n HAS GANADO \n");
+    }
 
     printf("\n");
     system("pause");
-
 }
 
 int numeros_ingresados(int *lista_numeros,int *numero, int *pos_arreglo){
