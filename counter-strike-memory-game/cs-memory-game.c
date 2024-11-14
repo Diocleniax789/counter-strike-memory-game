@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <windows.h>
+#include <time.h>
 
 #define FILAS 2
 #define COLUMNAS 2
@@ -445,7 +446,7 @@ void partida_como_terroristas(){
 
 void partida_como_anti_terroristas(){
 
-    int contador_casillas_ocupadas = 0,j,k,ya_ingresado,x,y,total_casillas,contador_intentos,valido1,valido2,score,partida_ganada_perdida = 0,aciertos = 0;
+    int contador_casillas_ocupadas = 0,j,k,ya_ingresado,x,y,total_casillas,contador_intentos,valido1,valido2,score,partida_ganada_perdida = 0,aciertos = 0,bomba = 20000;
     static int numero;
     static int lista_numeros[ELEMENTOS];
     static int pos_arreglo = 0;
@@ -570,6 +571,7 @@ void partida_como_anti_terroristas(){
     Sleep(3000);
 
    system("cls");
+// arreglar lo de la bomba
 
    printf("\n GO GO GO! \n");
    printf("\n");
@@ -693,26 +695,6 @@ void partida_como_anti_terroristas(){
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 void cartel_inicio_anti_terroristas(){
 system("cls");
