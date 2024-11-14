@@ -9,6 +9,7 @@
 void gotoxy(int,int);
 void cartel_menu();
 void iniciar_nuevo_juego();
+void cartel_inicio_anti_terroristas();
 void partida_como_terroristas();
 void partida_como_anti_terroristas();
 int numeros_ingresados(int*,int*,int*);
@@ -456,6 +457,8 @@ void partida_como_anti_terroristas(){
     total_casillas = FILAS * COLUMNAS;
     printf("%i",total_casillas);
 
+    cartel_inicio_anti_terroristas();
+
  do{
         system("cls");
         for(j = 0; j < FILAS; j++){
@@ -568,7 +571,7 @@ void partida_como_anti_terroristas(){
 
    system("cls");
 
-   printf("\n LET'S MOVE OUT! \n");
+   printf("\n GO GO GO! \n");
    printf("\n");
 
    for(j = 0; j < FILAS; j++){
@@ -644,16 +647,16 @@ void partida_como_anti_terroristas(){
     valido2 = buscar_numero_en_la_grilla(grilla,ejeX,ejeY);
 
     if(valido1 == valido2){
-        printf("\n =================\n");
-        printf("\n * TERRORIST WIN *\n");
-        printf("\n =================\n");
+        printf("\n ========================= \n");
+        printf("\n * COUNTER-TERRORIST WIN * \n");
+        printf("\n ========================= \n");
         score = score + 100;
         partida_ganada_perdida = 1;
         aciertos++;
     } else{
-        printf("\n ========================= \n");
-        printf("\n * COUNTER-TERRORIST WIN * \n");
-        printf("\n ========================= \n");
+        printf("\n =================\n");
+        printf("\n * TERRORIST WIN *\n");
+        printf("\n =================\n");
         partida_ganada_perdida = 0;
         contador_intentos++;
     }
@@ -711,12 +714,33 @@ void partida_como_anti_terroristas(){
 
 
 
-
-
-
-
-
-
+void cartel_inicio_anti_terroristas(){
+system("cls");
+printf("\n");
+printf("\n ============================================================================================================= \n");
+printf("\n |///////////////////////////////////////////////////////////////////////////////////////////////////////////| \n");
+printf("\n ============================================================================================================= \n");
+printf("\n |//|                                                                                                     |//| \n");
+printf("\n |//| INTRODUCCION:                                                                                       |//| \n");
+printf("\n |//|                                                                                                     |//| \n");
+printf("\n |//| Eres un agente de elite del equipo anti-terrorista, altamente entrenado en misiones de precision y  |//| \n");
+printf("\n |//| estrategia. Acabas de recibir una mision critica: un grupo terrorista ha plantado una bomba, y solo |//| \n");
+printf("\n |//| tienes un tiempo limitado para desactivarla.                                                        |//| \n");
+printf("\n |//| Para lograrlo, deberas demostrar tu habilidad mental y concentracion al maximo, resolviendo un      |//| \n");
+printf("\n |//| tablero con pares de numeros ocultos que representan las combinaciones necesarias para desactivar   |//| \n");
+printf("\n |//| el explosivo. Cada par encontrado acelera el desarme, acercándote a la victoria. Pero el tiempo     |//| \n");
+printf("\n |//| corre, y la bomba no espera.                                                                        |//| \n");
+printf("\n |//|                                                                                                     |//| \n");
+printf("\n |//| Mision:                                                                                             |//| \n");
+printf("\n |//| Tu mision es clara: encontrar todos los pares correctos antes de que el temporizador llegue a cero. |//| \n");
+printf("\n |//| Solo entonces podras neutralizar la amenaza y asegurar la victoria.                                 |//| \n");
+printf("\n |//|                                                                                                     |//| \n");
+printf("\n ============================================================================================================= \n");
+printf("\n |///////////////////////////////////////////////////////////////////////////////////////////////////////////| \n");
+printf("\n ============================================================================================================= \n");
+printf("\n");
+system("pause");
+}
 
 int numeros_ingresados(int *lista_numeros,int *numero, int *pos_arreglo){
 int pos = 0,flag = 0;
