@@ -220,7 +220,9 @@ void partida_como_terroristas(){
             }
         }
 
-        // agregar aqui la lista de elementos que debe inicializarse nuevamente
+       for(j = 0; j < ELEMENTOS; j++){
+            lista_numeros[j] = 0;
+       }
 
     do{
 
