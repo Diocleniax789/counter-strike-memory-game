@@ -199,6 +199,7 @@ void gotoxy(int x, int y) {
 
 
 void partida_como_terroristas(){
+
     int contador_casillas_ocupadas = 0,j,k,ya_ingresado,x,y,total_casillas,contador_intentos,valido1,valido2,score,partida_ganada_perdida = 0,aciertos = 0;
     static int numero;
     static int lista_numeros[ELEMENTOS];
@@ -206,15 +207,20 @@ void partida_como_terroristas(){
     static int grilla[FILAS][COLUMNAS];
     static int ejeX;
     static int ejeY;
+    char op;
 
     total_casillas = FILAS * COLUMNAS;
     printf("%i",total_casillas);
 
+ do{
+        system("cls");
         for(j = 0; j < FILAS; j++){
             for(k = 0; k < COLUMNAS; k++){
                 grilla[j][k] = 0;
             }
         }
+
+        // agregar aqui la lista de elementos que debe inicializarse nuevamente
 
     do{
 
@@ -416,7 +422,20 @@ void partida_como_terroristas(){
 
 
     printf("\n");
-    system("pause");
+
+    do{
+
+        fflush(stdin);
+        printf("\n - Desea jugar de nuevo? Ingrese 's' o 'n': ");
+        scanf("%c",&op);
+        if(op != 's' && op != 'n'){
+            printf("\n x ERROR. INGRESE 's' O 'n'");
+        }
+
+    } while(op != 's' && op != 'n');
+
+ } while(op != 'n');
+
 }
 
 int numeros_ingresados(int *lista_numeros,int *numero, int *pos_arreglo){
