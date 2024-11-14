@@ -22,7 +22,6 @@ int main(){
 
     do{
         system("cls");
-        cartel_menu();
         printf("\n -------------------------------- \n");
         printf("\n |* COUNTER STRIKE MEMORY GAME *| \n");
         printf("\n -------------------------------- \n");
@@ -183,7 +182,7 @@ void iniciar_nuevo_juego(){
         break;
 
         case 2:
-            // partida_como_anti_terroristas();
+            partida_como_anti_terroristas();
         break;
 
     }
@@ -229,7 +228,7 @@ void partida_como_terroristas(){
         system("cls");
         fflush(stdin);
         printf("\n - NO SE PERMITIRA EL INGRESO DE UN YA INGRESADO ANTERIORMENTE - \n");
-        printf("\n Xx Preparte for the battle xX \n");
+        printf("\n Xx Prepare for the battle xX \n");
         do{
 
             printf("\n + Ingrese un numero que sera colocado en dos casillas diferentes: ");
@@ -440,6 +439,285 @@ void partida_como_terroristas(){
 
 }
 
+
+// partida como anti-terroristas
+
+void partida_como_anti_terroristas(){
+
+    int contador_casillas_ocupadas = 0,j,k,ya_ingresado,x,y,total_casillas,contador_intentos,valido1,valido2,score,partida_ganada_perdida = 0,aciertos = 0;
+    static int numero;
+    static int lista_numeros[ELEMENTOS];
+    static int pos_arreglo = 0;
+    static int grilla[FILAS][COLUMNAS];
+    static int ejeX;
+    static int ejeY;
+    char op;
+
+    total_casillas = FILAS * COLUMNAS;
+    printf("%i",total_casillas);
+
+ do{
+        system("cls");
+        for(j = 0; j < FILAS; j++){
+            for(k = 0; k < COLUMNAS; k++){
+                grilla[j][k] = 0;
+            }
+        }
+
+       for(j = 0; j < ELEMENTOS; j++){
+            lista_numeros[j] = 0;
+       }
+
+    do{
+
+        system("cls");
+        fflush(stdin);
+        printf("\n - NO SE PERMITIRA EL INGRESO DE UN YA INGRESADO ANTERIORMENTE - \n");
+        printf("\n Xx Prepare for the battle xX \n");
+        do{
+
+            printf("\n + Ingrese un numero que sera colocado en dos casillas diferentes: ");
+            scanf("%i",&numero);
+            ya_ingresado = numeros_ingresados(lista_numeros,&numero,&pos_arreglo);
+            if(ya_ingresado == 1){
+                printf("\n x ESE NUMERO YA SE HA INGRESADO ANTERIORMENTE. INTENTE CON OTRO x \n");
+            }
+        } while(ya_ingresado == 1);
+
+        lista_numeros[pos_arreglo] = numero;
+
+        do{
+            printf("\n CASILLA NUMERO %i \n",contador_casillas_ocupadas + 1);
+            do{
+                fflush(stdin);
+                printf("\n + Ingrese numero de la posicion X: ");
+                scanf("%i",&x);
+                if(x < 0 || x > 1){
+                    printf("\n x ERROR. INGRESE UN VALOR DE ENTRE '0' y '9' x \n");
+                }
+            } while(x < 0 || x > 1);
+
+            do{
+                fflush(stdin);
+                printf("\n + Ingrese numero de la posicion Y: ");
+                scanf("%i",&y);
+                if(y < 0 || y > 1){
+                    printf("\n x ERROR. INGRESE UN VALOR DE ENTRE '0' Y '9' x \n");
+                }
+            } while(y < 0 || y > 1);
+
+            if(grilla[x][y] != 0){
+                printf("\n x ERROR. ESA CASILLA YA ESTA OCUPADA x \n");
+            }
+
+        } while(grilla[x][y] != 0);
+
+        grilla[x][y] = numero;
+        contador_casillas_ocupadas++;
+
+
+        do{
+            printf("\n CASILLA NUMERO %i \n",contador_casillas_ocupadas + 1);
+            do{
+                fflush(stdin);
+                printf("\n + Ingrese numero de la posicion X: ");
+                scanf("%i",&x);
+                if(x < 0 || x > 1){
+                    printf("\n x ERROR. INGRESE UN VALOR DE ENTRE '0' y '9' x \n");
+                }
+            } while(x < 0 || x > 1);
+
+            do{
+                fflush(stdin);
+                printf("\n + Ingrese numero de la posicion Y: ");
+                scanf("%i",&y);
+                if(y < 0 || y > 1){
+                    printf("\n x ERROR. INGRESE UN VALOR DE ENTRE '0' Y '9' x \n");
+                }
+            } while(y < 0 || y > 1);
+
+            if(grilla[x][y] != 0){
+                printf("\n x ERROR. ESA CASILLA YA ESTA OCUPADA x \n");
+            }
+
+        } while(grilla[x][y] != 0);
+
+        grilla[x][y] = numero;
+        contador_casillas_ocupadas++;
+
+        printf("\n **** NUMERO INGRESADO EN AMBAS COORDENADAS DE FORMA EXITOSA **** \n");
+
+        printf("\n");
+        system("pause");
+
+
+
+
+    } while(contador_casillas_ocupadas < total_casillas);
+
+    printf("\n Game Commencing \n");
+    printf("\n");
+      for(j = 0; j < FILAS; j++){
+        for(k = 0; k < COLUMNAS; k++){
+            printf(" | %i \t",grilla[j][k]);
+        }
+        printf("\n --------------\n");
+    }
+
+    Sleep(3000);
+
+   system("cls");
+
+   printf("\n LET'S MOVE OUT! \n");
+   printf("\n");
+
+   for(j = 0; j < FILAS; j++){
+        for(k = 0; k < COLUMNAS; k++){
+            printf(" | x \t");
+        }
+        printf("\n --------------\n");
+    }
+
+
+
+   contador_intentos = 0;
+   score = 0;
+   while(contador_intentos < 2 && aciertos < 2){
+    printf("\n ////////////////////////////////////////////////");
+    printf("\n Contador de intentos: %i",contador_intentos);
+    printf("\n ///////////////////////////////////////////////");
+    printf("\n -------------------------------------------- \n");
+
+
+    printf("\n |*******************|");
+    printf("\n - Primera coordenada -");
+    printf("\n |*******************|");
+
+    do{
+        fflush(stdin);
+        printf("\n Ingrese numero de la posicion X <0 o 1>: ");
+        scanf("%i",&ejeX);
+        if(x < 0 || x > 1){
+            printf("\n x ERROR. INGRESE '0' O '1' x \n");
+        }
+    } while(x < 0 || x > 1);
+
+
+    do{
+        fflush(stdin);
+        printf("\n Ingrese numero de la posicion Y <0 o 1>: ");
+        scanf("%i",&ejeY);
+        if(y < 0 || y > 1){
+            printf("\n x ERROR. INGRESE '0' O '1' x \n");
+        }
+    } while(y < 0 || y > 1);
+
+    printf("\n");
+
+    valido1 = buscar_numero_en_la_grilla(grilla,ejeX,ejeY);
+
+    printf("\n |*******************|");
+    printf("\n - Segunda coordenada -");
+    printf("\n |*******************|");
+
+    do{
+        fflush(stdin);
+        printf("\n Ingrese numero de la posicion X <0 o 1>: ");
+        scanf("%i",&ejeX);
+        if(x < 0 || x > 1){
+            printf("\n x ERROR. INGRESE '0' O '1' x \n");
+        }
+    } while(x < 0 || x > 1);
+
+
+    do{
+        fflush(stdin);
+        printf("\n Ingrese numero de la posicion Y <0 o 1>: ");
+        scanf("%i",&ejeY);
+        if(y < 0 || y > 1){
+            printf("\n x ERROR. INGRESE '0' O '1' x \n");
+        }
+    } while(y < 0 || y > 1);
+
+    printf("\n");
+
+    valido2 = buscar_numero_en_la_grilla(grilla,ejeX,ejeY);
+
+    if(valido1 == valido2){
+        printf("\n =================\n");
+        printf("\n * TERRORIST WIN *\n");
+        printf("\n =================\n");
+        score = score + 100;
+        partida_ganada_perdida = 1;
+        aciertos++;
+    } else{
+        printf("\n ========================= \n");
+        printf("\n * COUNTER-TERRORIST WIN * \n");
+        printf("\n ========================= \n");
+        partida_ganada_perdida = 0;
+        contador_intentos++;
+    }
+
+   }
+
+    if(contador_intentos > 1){
+        printf("\n HAS PERDIDO \n");
+    } else if(partida_ganada_perdida != 0){
+        printf("\n HAS GANADO \n");
+    }
+
+
+    printf("\n");
+
+    do{
+
+        fflush(stdin);
+        printf("\n - Desea jugar de nuevo? Ingrese 's' o 'n': ");
+        scanf("%c",&op);
+        if(op != 's' && op != 'n'){
+            printf("\n x ERROR. INGRESE 's' O 'n'");
+        }
+
+    } while(op != 's' && op != 'n');
+
+ } while(op != 'n');
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 int numeros_ingresados(int *lista_numeros,int *numero, int *pos_arreglo){
 int pos = 0,flag = 0;
 
@@ -482,5 +760,4 @@ int buscar_numero_en_la_grilla(int grilla[FILAS][COLUMNAS], int x, int y) {
 
     return valor;
 }
-
 
