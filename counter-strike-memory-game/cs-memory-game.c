@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <windows.h>
-#include <time.h>
+#include <time.h> //probar esta libreria para programar la bomba
 
 #define FILAS 2
 #define COLUMNAS 2
@@ -230,7 +230,7 @@ void partida_como_terroristas(){
         system("cls");
         fflush(stdin);
         printf("\n - NO SE PERMITIRA EL INGRESO DE UN YA INGRESADO ANTERIORMENTE - \n");
-        printf("\n Xx Prepare for the battle xX \n");
+        printf("\n /-/ Prepare for the battle /-/ \n");
         do{
 
             printf("\n + Ingrese un numero que sera colocado en dos casillas diferentes: ");
@@ -477,7 +477,7 @@ void partida_como_anti_terroristas(){
         system("cls");
         fflush(stdin);
         printf("\n - NO SE PERMITIRA EL INGRESO DE UN YA INGRESADO ANTERIORMENTE - \n");
-        printf("\n Xx Prepare for the battle xX \n");
+        printf("\n /-/ Prepare for the battle /-/ \n");
         do{
 
             printf("\n + Ingrese un numero que sera colocado en dos casillas diferentes: ");
