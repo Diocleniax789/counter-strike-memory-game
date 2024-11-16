@@ -1,7 +1,11 @@
+/*
+Este es un juego de memoria donde tienes que averiguar el par de numeros iguales, puedes editar la cantidad de numeros en
+los define, asi para luego darle mas complejidad al juego"
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <windows.h>
-#include <time.h> //probar esta libreria para programar la bomba
 
 #define FILAS 2
 #define COLUMNAS 2
@@ -16,7 +20,6 @@ void partida_como_terroristas();
 void partida_como_anti_terroristas();
 int numeros_ingresados(int*,int*,int*);
 int buscar_numero_en_la_grilla(int [FILAS][COLUMNAS],int,int);
-//void mostrar_valores_completos();
 
 int main(){
     int op;
@@ -565,9 +568,6 @@ void partida_como_anti_terroristas(){
         printf("\n");
         system("pause");
 
-
-
-
     } while(contador_casillas_ocupadas < total_casillas);
 
     printf("\n Game Commencing \n");
@@ -593,8 +593,6 @@ void partida_como_anti_terroristas(){
         }
         printf("\n --------------\n");
     }
-
-
 
    contador_intentos = 0;
    score = 0;
@@ -704,13 +702,6 @@ void partida_como_anti_terroristas(){
     } while(op != 's' && op != 'n');
 
  } while(op != 'n');
-
-
-
-
-
-
-
 
 }
 
