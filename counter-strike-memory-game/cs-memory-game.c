@@ -11,6 +11,7 @@ void gotoxy(int,int);
 void cartel_menu();
 void iniciar_nuevo_juego();
 void cartel_inicio_anti_terroristas();
+void cartel_inicio_terroristas();
 void partida_como_terroristas();
 void partida_como_anti_terroristas();
 int numeros_ingresados(int*,int*,int*);
@@ -720,6 +721,34 @@ printf("\n |//|                                                                 
 printf("\n ============================================================================================================= \n");
 printf("\n |///////////////////////////////////////////////////////////////////////////////////////////////////////////| \n");
 printf("\n ============================================================================================================= \n");
+printf("\n");
+system("pause");
+}
+
+void cartel_inicio_terroristas(){
+system("cls");
+printf("\n");
+printf("\n ============================================================================================================== \n");
+printf("\n |////////////////////////////////////////////////////////////////////////////////////////////////////////////| \n");
+printf("\n ============================================================================================================== \n");
+printf("\n |//|                                                                                                      |//| \n");
+printf("\n |//| INTRODUCCION:                                                                                        |//| \n");
+printf("\n |//|                                                                                                      |//| \n");
+printf("\n |//| Eres un miembro de un equipo terrorista con una misión crucial: proteger la bomba que has            |//| \n");
+printf("\n |//| plantado hasta que explote. Para asegurarte de que los anti-terroristas no logren desactivarla,      |//| \n");
+printf("\n |//| tendrás que utilizar tu habilidad mental para mantenerlos distraídos.                                |//| \n");
+printf("\n |//| Frente a ti hay un tablero de códigos numéricos. Cada par que encuentres representa un refuerzo en   |//| \n");
+printf("\n |//| las medidas de seguridad de la bomba. Cuantos más pares encuentres, más difícil será para los anti-  |//| \n");
+printf("\n |//| terroristas detener la detonación.                                                                   |//| \n");
+printf("\n |//|                                                                                                      |//| \n");
+printf("\n |//| Mision:                                                                                              |//| \n");
+printf("\n |//| Tu objetivo es proteger la bomba completando todos los pares antes de que los anti-terroristas       |//| \n");
+printf("\n |//| ogren encontrar los suyos. ¡No dejes que interfieran! Solo así asegurarás que la bomba explote,      |//| \n");
+printf("\n |//| cumpliendo con la misión.                                                                            |//| \n");
+printf("\n |//|                                                                                                      |//| \n");
+printf("\n ============================================================================================================== \n");
+printf("\n |////////////////////////////////////////////////////////////////////////////////////////////////////////////| \n");
+printf("\n ============================================================================================================== \n");
 printf("\n");
 system("pause");
 }
