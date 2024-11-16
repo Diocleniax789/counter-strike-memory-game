@@ -214,6 +214,8 @@ void partida_como_terroristas(){
     total_casillas = FILAS * COLUMNAS;
     printf("%i",total_casillas);
 
+    cartel_inicio_terroristas();
+
  do{
         system("cls");
         for(j = 0; j < FILAS; j++){
@@ -419,9 +421,17 @@ void partida_como_terroristas(){
    }
 
     if(contador_intentos > 1){
-        printf("\n HAS PERDIDO \n");
+        printf("\n ================== ");
+        printf("\n ================== ");
+        printf("\n | * HAS PERDIDO * |");
+        printf("\n ================== ");
+        printf("\n ================== ");
     } else if(partida_ganada_perdida != 0){
-        printf("\n HAS GANADO \n");
+        printf("\n ==================");
+        printf("\n ==================");
+        printf("\n | * HAS GANADO * |");
+        printf("\n ==================");
+        printf("\n ==================");
     }
 
 
@@ -667,11 +677,18 @@ void partida_como_anti_terroristas(){
    }
 
     if(contador_intentos > 1){
-        printf("\n HAS PERDIDO \n");
+        printf("\n ================== ");
+        printf("\n ================== ");
+        printf("\n | * HAS PERDIDO * |");
+        printf("\n ================== ");
+        printf("\n ================== ");
     } else if(partida_ganada_perdida != 0){
-        printf("\n HAS GANADO \n");
+        printf("\n ==================");
+        printf("\n ==================");
+        printf("\n | * HAS GANADO * |");
+        printf("\n ==================");
+        printf("\n ==================");
     }
-
 
     printf("\n");
 
